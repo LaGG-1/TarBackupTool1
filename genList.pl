@@ -25,7 +25,7 @@ sub setList { # *archDirList, *currentParam, $ArchSize
 	# GetDirectory Size check 
 	local $quotgt='\''.$target.'\'';
 	print "target = $target\n";
-	local $targetSize=`du -sk $quotgt`;	
+	local $targetSize=`du -sk --apparent-size $quotgt`;	
 	$targetSize=~s/[^0-9].*//s; 
 
 	# current list size reach max size
@@ -92,7 +92,7 @@ if ($ArchSize!~/[0-9]*$/) {
 
 #Target directory size check
 $Target=$ARGV[1];
-$currentSize=`du -sk $Target`;
+$currentSize=`du -sk --apparent-size $Target`;
 $currentSize=~s/[^0-9].*//s; 
 
 #Current work parameter array set
